@@ -1,0 +1,140 @@
+#:kivy 1.0.9
+#:import Graph kivy.garden.graph
+
+<WarningDialog>:
+    warningDlg: warningDlg
+    BoxLayout
+        padding: 10, 10, 10, 10
+        spacing: 10
+        orientation: "vertical"
+        Label:
+            markup: True
+            id: warningDlg
+            text: ""
+            size_hint: 1, None
+            text_size: self.width, None
+            height: self.texture_size[1]
+        Button:
+            height: 30
+            text: 'OK'
+            on_release: root.dispatch("on_answer")
+
+<FilePickDialog>:
+    text_input: text_input
+    BoxLayout:
+        size: root.size
+        pos: root.pos
+        orientation: "vertical"
+        FileChooserListView:
+            id: filechooser
+            path: "D:\\Documents\\Python\\pi2ard\\data\\"
+            on_selection: text_input.text = self.selection and self.selection[0] or ''
+
+        TextInput:
+            id: text_input
+            size_hint_y: None
+            height: 30
+            multiline: False
+
+        BoxLayout:
+            size_hint_y: None
+            height: 30
+            Button:
+                text: "Cancel"
+                on_release: root.cancel()
+
+            Button:
+                text: "Save"
+                on_release: root.save(filechooser.path, text_input.text)
+
+<Pi2ArdWidget>:
+    orientation: 'horizontal'
+
+    statusLbl: statusLbl
+    fileLbl: fileLbl
+    timeLbl: timeLbl
+    graph: graph
+    connectBtn: connectBtn
+    fileBtn: fileBtn
+    playBtn: playBtn
+    stopBtn: stopBtn
+
+    StackLayout:
+        size_hint: 0.24, 1
+        padding: 10, 10, 10, 10
+        spacing: 10, 10
+
+        Label:
+            id: statusLbl
+            color: 1, 0, 0, 1
+            text: "Disconnected"
+            size_hint: 1, None
+            height: 20
+            halign: 'center'
+            valign: 'center'
+
+        Button:
+            id: connectBtn
+            size_hint: 1, None
+            height: 50
+            text: "Connect"
+            on_press: root.toggleConnection()
+            disabled: True
+
+        Button:
+            id: fileBtn
+            size_hint: 1, None
+            height: 50
+            text: "Choose file"
+            on_press: root.openFilePick()
+
+        Label:
+            id: fileLbl
+            text: "D:\\Documents\\Python\\pi2ard\\data\\"
+            size_hint: 1, None
+            text_size: self.width, None
+            height: self.texture_size[1]
+
+        Button:
+            id: playBtn
+            size_hint: 0.5, None
+            height: 50
+            text: "Play"
+            on_press: root.play()
+            disabled: True
+
+        Button:
+            id: stopBtn
+            size_hint: 0.5, None
+            height: 50
+            text: "Stop"
+            on_press: root.stop()
+            disabled: True
+
+        Label:
+            id: timeLbl
+            text: 'Recording time: 00:00:00'
+            size_hint: 1, None
+            text_size: self.width, None
+            height: self.texture_size[1]
+            halign: 'center'
+            valign: 'center'
+ 
+    Graph:
+        id: graph
+        size_hint:      (0.8, 1)
+        xlabel:         'Time (sec)'
+        ylabel:         ''
+        x_ticks_minor:  1
+        x_ticks_major:  10
+        y_ticks_minor:  1
+        y_ticks_major:  10
+        y_grid_label:   True
+        x_grid_label:   True
+        padding:        5
+        x_grid:         True
+        y_grid:         True
+        xmin:           -50
+        xmax:           10
+        ymin:           0
+        ymax:           10

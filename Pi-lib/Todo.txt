@@ -1,0 +1,7 @@
+﻿Todo list:
+* Comment code
+* Expand Readme.txt
+* Document in Doc.txt
+* Upload to GitHub
+* Make backwards compatible with Python 2.7
+* Maybe make an Android to Arduino lib?!

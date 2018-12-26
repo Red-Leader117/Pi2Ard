@@ -1,0 +1,3 @@
+﻿Relies on:
+* Kivy
+* Serial

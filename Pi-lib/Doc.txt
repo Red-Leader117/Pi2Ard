@@ -1,0 +1,2 @@
+﻿Usage:
+from pi2ard import Pi2Ard
