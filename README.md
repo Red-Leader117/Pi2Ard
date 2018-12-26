@@ -19,10 +19,11 @@ This is an archive of a project I did. The task was to transfer temperature data
 5. Run _Pi-lib/gui/main.py_ with a Python 3 interpreter
 
 ## Technical details
-Please see the wiki (coming soon) for more details on the design and implementation of this code
+Please see the [wiki][6] for more details on the design and implementation of this code
 
 [1]: https://learn.adafruit.com/adafruit-max31865-rtd-pt100-amplifier/arduino-code
 [2]: https://kivy.org/
 [3]: https://kivy-garden.github.io/
 [4]: https://github.com/kivy-garden/garden.graph
 [5]: https://pyserial.readthedocs.io/
+[6]: https://github.com/Red-Leader117/Pi2Ard/wiki
